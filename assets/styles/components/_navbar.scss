@@ -1,0 +1,20 @@
+.navbar {
+    background-color: $color-violet;
+}
+
+.logo-wrapper {
+    font-family: 'Shadows Into Light', cursive; 
+    color: $color-pink;
+}
+
+.title {
+    @include fluid-font(30px, 35px);
+    // font-size: 4rem;
+    color: $color-pink;
+    padding-left: 1rem;
+}
+
+.material-icons.md-48 { 
+    font-size: 36px; 
+}
+

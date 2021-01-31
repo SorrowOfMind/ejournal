@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+html, body {
+    min-height: 100%;
+    font-size: 10px;
+    scroll-behavior: smooth;
+    background-color: $color-bg;
+}
