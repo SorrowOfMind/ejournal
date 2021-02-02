@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'class': 'form form-register p-5', 'autocomplete': 'off'}})}}
+    <h1 class="h3 mb-3 font-weight-normal form-title pb-5">Register</h1>
+    {{ form_widget(form) }}
+    <div class="form-footer d-flex justify-content-between align-items-end">
+        <a href={{ path('app_login') }} class="form-redirect-link">Already a member? Log in.</a>
+        <button class="btn btn-lg btn-form" type="submit">
+            Register!
+        </button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
