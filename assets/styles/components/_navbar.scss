@@ -8,13 +8,33 @@
 }
 
 .title {
-    @include fluid-font(30px, 35px);
-    // font-size: 4rem;
+    @include fluid-font(25px, 35px);
     color: $color-pink;
     padding-left: 1rem;
 }
 
 .material-icons.md-48 { 
     font-size: 36px; 
+}
+
+.user-panel {
+    @include fluid-font(18px, 22px);
+}
+
+.user-logo {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: $color-pink;
+    color: $color-violet;
+}
+
+.links {
+    .nav-link {
+        color: $color-pink;
+        &:hover {
+            color: $color-pink-hover;
+        }
+    }
 }
 
