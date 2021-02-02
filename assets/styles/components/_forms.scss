@@ -1,0 +1,36 @@
+.form {
+    width: 50%;
+    min-width: 340px;
+    margin: 4rem auto;
+    background-color: $color-form-bg;
+    color: $color-form-font;
+    .form-title {
+        @include fluid-font(18px, 25px);
+    }
+    .form-label, .form-input {
+        @include fluid-font(16px, 18px);
+        margin-bottom: 1rem;
+    }
+    .form-input {
+        padding: .5rem 1rem;
+        &:focus {
+            box-shadow: 0 0 3px $color-form-font;
+        }
+    }
+    .btn-form {
+        @include fluid-font(16px, 18px);
+        background-color: $color-form-btn;
+        padding: .8rem 2rem;
+        margin-top: 1.5rem;
+        color: #735E81;
+        &:hover {
+            background-color: $color-form-btn-hover;
+        }
+    }
+
+    .form-redirect-link {
+        @include fluid-font(13px, 15px);
+        color: $color-form-font;
+        text-decoration: underline;
+    }
+}
