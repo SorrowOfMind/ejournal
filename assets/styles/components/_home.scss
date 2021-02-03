@@ -1,0 +1,25 @@
+.section-home {
+    margin: 4rem auto;
+    width: 50%;
+    min-width: 340px;
+    text-align: center;
+    background-color: #99cea5;
+    line-height: 3;
+}
+
+.section-title {
+    @include fluid-font(18px, 22px);
+}
+
+.section-subtitle {
+    @include fluid-font(18px, 20px);
+}
+
+.btn-dashboard {
+    @include fluid-font(16px, 18px);
+    background-color: $color-btn;
+    padding: .8rem 2rem;
+    &:hover {
+        background-color: $color-btn-hover;
+    }
+}
