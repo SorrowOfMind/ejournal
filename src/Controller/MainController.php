@@ -11,7 +11,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-        $username = $this->getUser()->getEmail() ?? 'Stranger';
+        $username = $this->getUser() ? $this->getUser()->getEmail() : 'Stranger';
 
         return $this->render('main/index.html.twig', [
             'username' => $username,

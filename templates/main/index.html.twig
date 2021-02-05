@@ -4,6 +4,6 @@
     <section class="section section-home p-5">
        <h2 class="section-title">Welcome <b>{{ username }}</b> to your online journal!</h2>
        <p class="section-subtitle">You can explore your dashboard!</p>
-       <a href="" class="btn btn-large btn-dashboard">Dashboard</a>
+       <a href={{ path('dashboard_index') }} class="btn btn-large btn-dashboard">Dashboard</a>
     </section>
 {% endblock %}

@@ -1,0 +1,54 @@
+.section-posts {
+    width: 80%;
+    min-width: 340px;
+    margin: 4rem auto;
+}
+
+.card {
+    max-width: 300px;
+}
+
+.card-title {
+    @include fluid-font(18px, 22px);
+}
+
+.entry-link-wrapper {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 1px solid $color-violet;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border .2s, background .2s;
+    &:before {
+        content: '';
+        width: 1px;
+        height: 1px;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $color-violet;
+        transition: transform .2s;
+    }
+    &:hover:before{
+        transform: scale(100);
+    }
+}
+
+.entry-add-btn {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    @include fluid-font(18px, 25px);
+    color: $color-violet;
+    height: 100%;
+    line-height: 1.3;
+    &:hover {
+        color: #fff;
+    }
+}
