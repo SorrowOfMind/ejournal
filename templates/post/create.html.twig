@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'class': 'form form-create p-5', 'autocomplete': 'off'}}) }}
+    {{ form_widget(form) }}
+        <button class="btn btn-lg btn-block btn-form w-100" type="submit">
+            Create!
+        </button>
+    {{ form_end(form) }}
+{% endblock %}

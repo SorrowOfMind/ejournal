@@ -33,4 +33,9 @@
         color: $color-form-font;
         text-decoration: underline;
     }
+
+    .form-input-create {
+        min-height: 200px !important;
+        overflow: auto;
+    }
 }
