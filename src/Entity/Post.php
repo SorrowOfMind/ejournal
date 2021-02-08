@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -20,12 +22,11 @@ class Post
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $content;
 
     /**
-     * @var \DateTime $created
-     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $created;
@@ -33,14 +34,20 @@ class Post
     /**
      * @var \DateTime $updated
      * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $userId;
+    private $user;
+
+    public function __construct()
+    {
+        $this->created = new DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -63,28 +70,20 @@ class Post
         return $this->created;
     }
 
-    // public function setCreated(\DateTimeInterface $created): self
-    // {
-    //     $this->created = $created;
-
-    //     return $this;
-    // }
-
     public function getUpdated(): ?\DateTimeInterface
     {
         return $this->updated;
     }
 
-    // public function setUpdated(\DateTimeInterface $updated): self
-    // {
-    //     $this->updated = $updated;
-
-    //     return $this;
-    // }
-
-    public function setUserId(User $userId): self
+    public function getUser(): ?User
     {
-        $this->userId = $userId;
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
         return $this;
     }
+
 }
