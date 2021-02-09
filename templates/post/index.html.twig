@@ -2,13 +2,22 @@
 
 {% block body %}
     <section class="section section-posts">
-        <div class="posts-wrapper">
-            <div class="card p-5 text-center">
-                <h5 class="card-title pb-5">Add new entry</h5>
-                <div class="entry-link-wrapper">
-                    <a href={{ path('dashboard_create') }} class="card-link entry-add-btn">&plus;</a>
-                </div>
+        <div class="card p-5 text-center mb-5">
+            <h5 class="card-title pb-5">Add new entry</h5>
+            <div class="entry-link-wrapper">
+                <a href={{ path('dashboard_create') }} class="card-link entry-add-btn">&plus;</a>
             </div>
+        </div>
+        <div class="posts-wrapper">
+            {% if (posts) %}
+                {% for post in posts %}
+                    <div class="post card">
+                        <h5 class="card-title post-title">Created at: {{ post.created | date("Y-d-m H:i") }}</h5>
+                        <p class="post-content">{{ post.content | slice(0, 100) }}...</p>
+                        <a href={{ path('dashboard_show', {id: post.id})}} class="btn btn-read">Read more</a>
+                    </div>
+                {% endfor %}
+        {% endif %}
         </div>
     </section>
 {% endblock %}
