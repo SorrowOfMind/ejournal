@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\PostType;
 use App\Entity\Post;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,8 +17,9 @@ class PostController extends AbstractController
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $posts = $this->getUser()->getPosts();
 
-        return $this->render('post/index.html.twig');
+        return $this->render('post/index.html.twig', ['posts'=>$posts]);
     }
 
     #[Route('/create', name:'create')]
@@ -36,7 +38,6 @@ class PostController extends AbstractController
             $user = $this->getUser();
             
             $post->setUser($user);
-            $user->addPost($post);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
@@ -47,5 +48,15 @@ class PostController extends AbstractController
 
         return $this->render('post/create.html.twig', ['form'=>$form->createView()]);
 
+    }
+
+    #[Route('/show/{id}', name:"show")]
+    public function show(int $id, PostRepository $postRepo)
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser()->getId();
+        $post = $postRepo->findOneByIdAndUser($id, $user);
+
+        return $this->render('post/show.html.twig', ['post'=>$post]);
     }
 }

@@ -40,6 +40,9 @@
 }
 
 .entry-add-btn {
+    display: block;
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 50%;
@@ -50,5 +53,45 @@
     line-height: 1.3;
     &:hover {
         color: #fff;
+    }
+}
+
+.posts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.post {
+    flex: 1;
+    position: relative;
+}
+
+.post:not(:last-child) {
+    margin-right: 2rem;
+}
+
+.post-content, .post-title, .btn-read {
+    @include fluid-font(14px, 16px);
+}
+
+.post-title {
+    background-color: $color-green;
+    padding: 2rem;
+}
+
+.post-content {
+    padding: 0 2rem 6rem 2rem;
+}
+
+.btn-read {
+    background-color: $color-btn;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    transition: background .2s;
+    &:hover {
+        background-color: $color-btn-hover;
     }
 }

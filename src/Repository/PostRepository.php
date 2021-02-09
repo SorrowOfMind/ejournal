@@ -47,4 +47,16 @@ class PostRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findOneByIdAndUser(int $id, int $user): ?Post
+    {
+        $em = $this->getEntityManager();
+        $sql = $em->createQuery(
+            'SELECT p
+            FROM App\Entity\Post p
+            WHERE p.id = :id AND p.user = :user'
+        )->setParameter('id', $id)->setParameter('user', $user);
+
+        return $sql->getOneOrNullResult();
+    }
 }
