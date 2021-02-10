@@ -15,7 +15,6 @@ class PostType extends AbstractType
         $builder
             ->add('content', TextareaType::class, [
                 'attr'=>['class'=>'form-input form-input-create'],
-                'label'=>'Add new entry to your e-JOURNAL',
                 'label_attr'=>['class'=>'form-label']
             ])
         ;
