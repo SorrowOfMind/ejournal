@@ -57,6 +57,32 @@ class PostController extends AbstractController
         $user = $this->getUser()->getId();
         $post = $postRepo->findOneByIdAndUser($id, $user);
 
+        if (!$post) throw $this->createNotFoundException('Post not found.');
+
         return $this->render('post/show.html.twig', ['post'=>$post]);
+    }
+
+    #[Route('/edit/{id}', name: 'edit')]
+    public function edit(Request $request, int $id, PostRepository $postRepo)
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser()->getId();
+        $post = $postRepo->findOneByIdAndUser($id, $user);
+
+        if (!$post) throw $this->createNotFoundException('Post not found :(');
+
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() and $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $this->addFlash('notice', 'Post has been updated!');
+
+            return $this->redirectToRoute('dashboard_index');
+        }
+
+        return $this->render('post/edit.html.twig', ['form'=>$form->createView()]);
     }
 }

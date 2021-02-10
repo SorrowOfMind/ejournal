@@ -4,7 +4,7 @@
     <section class="section section-post-details">
         <h2 class="post-title">Created at: {{ post.created | date("Y-d-m H:i") }}
             <div class="action-icons">
-                <span class="material-icons icon-edit text-primary">edit</span>
+                <a href={{ path('dashboard_edit', {id: post.id}) }}><span class="material-icons icon-edit text-primary">edit</span></a>
                 <span class="material-icons icon-delete text-danger">delete_forever</span>
             </div>
         </h2>

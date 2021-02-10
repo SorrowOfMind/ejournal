@@ -2,10 +2,10 @@
 
 {% block body %}
     {{ form_start(form, {'attr': {'class': 'form form-create p-5', 'autocomplete': 'off'}}) }}
-    {{ form_label(form.content, 'Add a new entry to your e-JOURNAL!') }}
+    {{ form_label(form.content, 'Edit the entry in your e-JOURNAL!') }}
     {{ form_widget(form.content) }}
         <button class="btn btn-lg btn-block btn-form w-100" type="submit">
-            Create!
+            Edit!
         </button>
     {{ form_end(form) }}
 {% endblock %}
