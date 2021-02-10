@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <p>{{post.content}}</p>
+    <section class="section section-post-details">
+        <h2 class="post-title">Created at: {{ post.created | date("Y-d-m H:i") }}
+            <div class="action-icons">
+                <span class="material-icons icon-edit text-primary">edit</span>
+                <span class="material-icons icon-delete text-danger">delete_forever</span>
+            </div>
+        </h2>
+        <p class="post-content">{{ post.content }}</p>
+        <a href={{ path('dashboard_index') }} class="go-back-link">&larr; Go back</a>
+    </section>
 {% endblock %}
